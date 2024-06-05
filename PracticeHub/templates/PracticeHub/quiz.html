@@ -1,0 +1,97 @@
+{% extends 'theme.html' %}
+
+{% load static %}
+{% block head %}
+<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
+{% endblock%}
+
+
+{% block content %}
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body" >
+             <p id="modalResult" class="m-3 text-white text-center"></p>
+             <p id="modalContent" class="m-3 text-white text-center"></p>
+
+        </div>
+        <div class="m-2 text-center">
+            <button type="button" class="btn bg-gray-100" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!--end modal-->
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-6 ">
+            <div id="currentNoun" class="card m-5 p-3 shadow noun-card text-center">{{noun.name}}</div>
+        </div>
+    </div>
+    <div class="row m-3 p-3"> {% for article in articles%}
+        <div class="col-lg-4 ">
+            <div class="card  text-white shadow option-card text-center {{article.name}} "   onclick="checkAnswer('{{article.name}}')" >
+                <div class="card-body">
+                    {{article.name}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-2 ">
+        <div class="card shadow text-center m-5  new-word text-white"  onclick="window.location.reload();"  >
+            <div class="card-body" >
+                New Word
+            </div>
+        </div>
+    </div>
+</div>
+ 
+{% endblock content %}
+
+{% block js%}
+<script>
+    const correctArticle = "{{noun.singular_article.name}}";
+    const nounDesc = "{{noun}}"
+    function checkAnswer(clickvalue)
+    {
+        console.log(clickvalue);
+        console.log(correctArticle);
+        whiteText = "text-white";
+        if(correctArticle === clickvalue)
+        {
+            console.log("CORRECT")
+            $("#currentNoun").addClass(correctArticle);
+            $("#currentNoun").addClass(whiteText);
+            $('#answerModal .modal-content').addClass("correct-answer")
+            $('#answerModal .modal-content').removeClass("wrong-answer")
+
+            $('#answerModal #modalResult').html("You answer is CORRECT!");
+            $('#answerModal #modalContent').html(nounDesc);
+
+            $('#answerModal ').modal('show');
+
+        }
+        else 
+        {
+            console.log("iNCORRECT")
+            $("#currentNoun").removeClass(correctArticle);
+            $("#currentNoun").removeClass(whiteText);
+            $('#answerModal .modal-content').addClass("wrong-answer")
+            $('#answerModal .modal-content').removeClass("correct-answer")
+            $('#answerModal #modalContent').html("");
+
+            $('#answerModal #modalResult').html("You answer is Wrong! try again!! ");
+            $('#answerModal ').modal('show');
+
+
+        }
+
+    }
+
+</script>
+    
+{% endblock%}
