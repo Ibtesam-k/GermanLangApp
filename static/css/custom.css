@@ -1,0 +1,65 @@
+.noun-card
+{
+    font-size: 2.5em;
+    cursor: pointer;
+
+}
+.option-card{
+    font-size: 1.5em;
+}
+.option-card:hover{
+  /*background-color: black;*/
+
+  cursor: pointer;
+
+}
+
+.die {
+    background-color:#d672c0 ;
+}
+.die:hover {
+    background-color:#d52db1 ;
+    border: 2px solid rgb(23, 20, 20);
+    cursor: pointer;
+
+
+}
+.der {
+    background-color:#597cde ;
+}
+.der:hover {
+    background-color:#3562df ;
+    border: 2px solid rgb(23, 20, 20);
+    cursor: pointer;
+
+}
+.das {
+    background-color:#e6ce63 ;
+}
+.das:hover {
+    background-color:#e3c437 ;
+    border: 2px solid rgb(23, 20, 20);
+    cursor: pointer;
+
+}
+
+.new-word{
+    background-color: #19b58e;
+}
+.new-word:hover
+{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.correct-answer
+{
+    background-color: #7bdb9d;
+    color: black;
+}
+
+.wrong-answer
+{
+    background-color: rgb(216, 105, 105);
+    color: white;
+}
