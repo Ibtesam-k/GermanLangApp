@@ -1,0 +1,61 @@
+{% extends 'theme.html' %}
+{% load static %}
+{% block head %}
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+{% endblock head%}
+{% block content %}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Noun</th>
+                        <th>Desc</th>
+                        <th>Meaning</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Article</th>
+                        <th>Noun</th>
+                        <th>Desc</th>
+                        <th>Meaning</th>
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for noun in nouns %}
+
+                    <tr>
+                        <td>{{noun.singular_article.name}}</td>
+
+                        <td>{{noun.name}}</td>
+                        <td>{{noun}}</td>
+                        <td>{{noun.meaning}}</td>
+
+                    </tr>
+                    {%  endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block js %}
+    <script src="{% static 'js/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+{% endblock js %}
+
