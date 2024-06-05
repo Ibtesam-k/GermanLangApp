@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from .credentials import DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,9 +81,9 @@ WSGI_APPLICATION = 'GermanLang.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "GermanLangDB",
-        "USER": "root",
-        "PASSWORD": "Sam@mysql.2023.",
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USERNAME,
+        'PASSWORD': DATABASE_PASSWORD,
         "HOST": "127.0.0.1",
         "PORT": "3306",
     }
