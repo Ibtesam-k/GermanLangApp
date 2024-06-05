@@ -23,7 +23,8 @@ class Noun (models.Model):
         presentation = self.singular_article.abbr+" "+self.name+", "+self.plural_abbr
         if (self.plural != "No Plural"):   
            presentation+="=> die "+self.plural
-        presentation +=" ("+self.meaning+")"
+        if self.meaning:
+            presentation +=" ("+self.meaning+")"
         return presentation
 
 
